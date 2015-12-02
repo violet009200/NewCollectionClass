@@ -146,35 +146,6 @@
 		newNode->next = NULL;
 	}
 
-	bool LList::hasIt(int elem){
-		node* curNode = this->head;
-
-		if(curNode == NULL){
-			cerr<<"LList is empty"<<endl;
-			return false;
-		}
-
-		while(curNode->next != NULL){
-			if(curNode->value == elem){
-				cout<<"LList has the elem"<<endl;
-				return true;
-			}
-			else curNode = curNode->next;
-		}
-		cout<<"LList does not have the elem"<<endl;
-		return false;
-	}
-
-	LList* LList::helpMap(int (*fn)(int)){
-		node* curNode = this->head;
-		while(curNode != NULL){
-			curNode->value = fn(curNode->value);
-			curNode = curNode->next;
-		}
-		return this;
-	}
-
-	
 
 	LList* LList::copy(){
 		/*cout<<"		LList copy() is called"<<endl;
@@ -209,10 +180,6 @@
 		cout<<endl;
 
 	}
-
-/*	int LList::getIndex(){
-		return index;
-	}*/
 
 	int LList::getSize(){
 		return size_;

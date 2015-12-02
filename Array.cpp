@@ -67,32 +67,6 @@
 
 	}
 
-	bool Array::hasIt(int elem){
-
-		if(this->arrayPtr == NULL){
-			cerr<<" Array is Empty"<<endl;
-			exit(0);
-		}
-		int i = 0;
-		while(i<size_){
-			if(this->arrayPtr[i] == elem){
-				cout<<"Array has the elem"<<endl;
-				return true;
-			}
-			else i++;
-		}
-		cout<<"Array does not have the elem"<<endl;
-		return false;
-	}
-	
-	Array* Array::helpMap(int (*fn)(int)){
-		int i = 0;
-		while(i< size_){
-			this->arrayPtr[i] = fn(this->arrayPtr[i]);
-        	i++;
-		}
-		return this;
-	}
 
 	Array* Array::copy(){
 	/*	cout<<"		Array copy() is called"<<endl;

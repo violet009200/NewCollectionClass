@@ -6,7 +6,7 @@ class LList: public Collection
 {
 	public:
 		node *head;
-		//int index;
+		
 		//default construct
 		LList();
 		~LList();
@@ -20,12 +20,10 @@ class LList: public Collection
 		void deleteAll();
 		LList* copy();
 		void display();
-		//int getIndex();
+		
 		int getSize();
 
-		//helpfunction for contains()
-		bool hasIt(int);
-		LList* helpMap(int (*fn)(int));
+		
 
 
 };

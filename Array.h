@@ -19,12 +19,9 @@ class Array: public Collection
 
 		Array* copy();
 		void display();
-		//int getIndex();
+		
 		int getSize();
 
-		//helpfunction for contains()
-		bool hasIt(int);
-		Array* helpMap(int (*fn)(int));
-
+		
 
 };

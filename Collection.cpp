@@ -41,28 +41,73 @@
 	//if the collection has int, return true
 	bool Collection::contains(int elem){
 		cout<<"		Collection: contains() is called"<<endl;
-		bool result = false;
+		
+		if(typeid(*this) == typeid(LList)){
+			node* curNode = ((LList&)*this).head;
 
-		if(typeid(*this) == typeid(LList))
-			result = (((LList&)*this).hasIt(elem));
-		else{
-			result = (((Array&)*this).hasIt(elem));
+			if(curNode == NULL){
+				cerr<<"LList is empty"<<endl;
+				return false;
+			}
+
+			while(curNode->next != NULL){
+				if(curNode->value == elem){
+					cout<<"LList has the elem"<<endl;
+					return true;
+				}
+				else curNode = curNode->next;
+			}
+			cout<<"LList does not have the elem"<<endl;
+			return false;
 			
 		}
-		return result;
+		else{
+
+			if(((Array&)*this).arrayPtr == NULL){
+			cerr<<" Array is Empty"<<endl;
+			exit(0);
+		}
+		int i = 0;
+		while(i<size_){
+			if(((Array&)*this).arrayPtr[i] == elem){
+				cout<<"Array has the elem"<<endl;
+				return true;
+			}
+			else i++;
+		}
+		cout<<"Array does not have the elem"<<endl;
+		return false;
+			
+			
+		}
+		
 	} 
 	
 	Collection* Collection::map(int (*fn)(int)){
 		cout<<"		Collection: map() is called"<<endl;
 		Collection* result;
 
-		if(typeid(*this) == typeid(LList))
-			result = (((LList&)*this).helpMap(fn));
+		if(typeid(*this) == typeid(LList)){
+			node* curNode = ((LList&)*this).head;
+		while(curNode != NULL){
+			curNode->value = fn(curNode->value);
+			curNode = curNode->next;
+		}
+		return this;
+		
+		}
 		else{
-			result = (((Array&)*this).helpMap(fn));
+
+			int i = 0;
+		while(i< size_){
+			((Array&)*this).arrayPtr[i] = fn(((Array&)*this).arrayPtr[i]);
+        	i++;
+		}
+		return this;
+			
 			
 		}
-		return result;
+	
 	}
 
 
